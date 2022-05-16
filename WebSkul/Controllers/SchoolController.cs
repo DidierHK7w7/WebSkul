@@ -5,7 +5,7 @@ namespace WebSkul.Controllers
 {
     public class SchoolController : Controller  //herencia de clase controller
     {
-        public IActionResult School()   //metodo de vista
+        public IActionResult Index()   //metodo de vista
         {
             var school = new School();
             school.SchoolId = Guid.NewGuid().ToString();
