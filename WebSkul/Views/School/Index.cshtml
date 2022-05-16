@@ -1,5 +1,6 @@
 ﻿@{
-    ViewData["Title"] = "School";
+    ViewData["Title"] = "School";   //viewbag y viewdata, son 2 vistas de la misma informacion
+    Layout = "_Material";   //Layout que usara la vista
 }
 @model School    //indica que los modelos seran de tipo School para evitar errores en variables
 
@@ -9,4 +10,5 @@
     <h3>Nombre: @Model.Name</h3>    <!--Pasamos los objetos del modelo-->
     <h4>Año de fundacion: @Model.FoundationYear</h4>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <p>@ViewBag.DynamicThing</p>
 </div>

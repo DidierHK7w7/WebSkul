@@ -1,0 +1,10 @@
+﻿body {
+    background: linear-gradient(-21deg, #202020 50%, #000000 50%);
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+section {
+    flex: 1 0 auto;
+}

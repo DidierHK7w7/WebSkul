@@ -12,6 +12,8 @@ namespace WebSkul.Controllers
             school.Name = "Platzi School";
             school.FoundationYear = 2005;
 
+            ViewBag.DynamicThing = "Hello world xd";    //variable dinamica
+
             return View(school);  //retorna la vista
         }
     }
