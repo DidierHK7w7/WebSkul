@@ -8,9 +8,9 @@ namespace WebSkul.Controllers
         public IActionResult Index()   //metodo de vista
         {
             var school = new School();
-            school.SchoolId = Guid.NewGuid().ToString();
+            school.UniqueId = Guid.NewGuid().ToString();
             school.Name = "Platzi School";
-            school.FoundationYear = 2005;
+            school.CreationYear = 2005;
 
             ViewBag.DynamicThing = "Hello world xd";    //variable dinamica
 
