@@ -11,6 +11,10 @@ namespace WebSkul.Controllers
             school.UniqueId = Guid.NewGuid().ToString();
             school.Name = "Platzi School";
             school.CreationYear = 2005;
+            school.Address = "Groove Street";
+            school.Country = "Los Santos";
+            school.City = "San Andreas";
+            school.SchoolType = SchoolType.Middleschool;
 
             ViewBag.DynamicThing = "Hello world xd";    //variable dinamica
 
