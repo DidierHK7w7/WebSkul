@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using WebSkul.Models;
 
 namespace WebSkul.Controllers
 {
@@ -6,7 +7,12 @@ namespace WebSkul.Controllers
     {
         public IActionResult School()   //metodo de vista
         {
-            return View();  //retorna la vista
+            var school = new School();
+            school.SchoolId = Guid.NewGuid().ToString();
+            school.Name = "Platzi School";
+            school.FoundationYear = 2005;
+
+            return View(school);  //retorna la vista
         }
     }
 }
