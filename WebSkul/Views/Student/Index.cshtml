@@ -1,8 +1,8 @@
 ﻿@{
-    ViewData["Title"] = "Asignatura";   //viewbag y viewdata, son 2 vistas de la misma informacion
+    ViewData["Title"] = "Alumno";   //viewbag y viewdata, son 2 vistas de la misma informacion
     Layout = "_Material";   //Layout que usara la vista
 }
-@model Subject    //indica que los modelos seran de tipo School para evitar errores en variables
+@model Student    //indica que los modelos seran de tipo School para evitar errores en variables
 
 <div>
     <h1 class="display-4 center-align">@ViewData["Title"]</h1>
@@ -20,5 +20,5 @@
     <p>@ViewBag.DynamicThing</p>
     <p>@ViewBag.Date</p>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-    <a class="grey darken-3 waves-effect waves-light btn-small" asp-area="" asp-controller="Subject" asp-action="MultiSubject"><i class="material-icons right">send</i>Asignaturas</a>
+    <a class="grey darken-3 waves-effect waves-light btn-small" asp-area="" asp-controller="Student" asp-action="MultiStudent"><i class="material-icons right">send</i>Alumnos</a>
 </div>

@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Alumnos multiples";   //viewbag y viewdata, son 2 vistas de la misma informacion
+    Layout = "_Material";   //Layout que usara la vista (MaterializeCSS)
+}
+@model List<Student>    //Si se recibe multiples asignaturas sera una lista o cualquier otro objeto de coleccion, no tiene nombre pero es un modelo
+
+<section class="white black-text">
+    <div class="">
+        <h1 class="display-4 center-align">@ViewData["Title"]</h1>
+        <br />
+
+        <table class="striped">    <!--<table class="table table-dark table-hover">--> <!--Bootstrap-->
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Id</th>
+                </tr>
+            </thead>
+            <tbody>
+            @{
+                int i = 1;
+                foreach (var student in Model)
+                {
+                    <tr>
+                        <th scope="row">@i</th>
+                        <td>@student.Name</td>
+                        <td>@student.UniqueId</td>
+                    </tr>
+                    i++;
+                }
+            }
+            </tbody>
+        </table>
+    </div>
+</section>
