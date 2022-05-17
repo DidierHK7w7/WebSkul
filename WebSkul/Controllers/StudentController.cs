@@ -31,7 +31,9 @@ namespace WebSkul.Controllers
             var studentList = from n1 in firstName
                               from n2 in middleName
                               from a1 in lastName
-                              select new Student { Name = $"{n1} {n2} {a1}" };
+                              select new Student { Name = $"{n1} {n2} {a1}",
+                                                   UniqueId = Guid.NewGuid().ToString() };
+
             return studentList.OrderBy((stn) => stn.UniqueId).ToList();     //El delegado Obrder By ordena por el ide unico y Take trunca la lista de n alumnos a un numero especifico
         }
     }

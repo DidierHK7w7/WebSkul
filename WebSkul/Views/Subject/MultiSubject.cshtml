@@ -9,9 +9,6 @@
     <br />
 
     <p><b>Vista Parcial</b></p>
-    @foreach (var subject in Model)     //Modelo List<Subject>
-    {
-        <partial name="_SchoolBaseObject" model="subject"></partial>
-    }
+    <partial name="_BaseSchoolObjectList"></partial>
 
 </div>
