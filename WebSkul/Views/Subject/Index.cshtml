@@ -6,9 +6,19 @@
 
 <div>
     <h1 class="display-4 center-align">@ViewData["Title"]</h1>
-    <h2>Nombre: @Model.Name</h2>    <!--Pasamos los objetos del modelo-->
-    
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <div>
+        <p><b>Vista normal</b></p>
+        <p>Nombre: @Model.Name</p>
+        <p>Id: @Model.UniqueId</p>
+    </div>
+    <br />
+
+    <p><b>Vista Parcial</b></p>
+    <partial name="_SimpleSubject"></partial>    <!--Tag helper-->
+
+    <br />
     <p>@ViewBag.DynamicThing</p>
     <p>@ViewBag.Date</p>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <a class="grey darken-3 waves-effect waves-light btn-small" asp-area="" asp-controller="Subject" asp-action="MultiSubject"><i class="material-icons right">send</i>Asignaturas</a>
 </div>
