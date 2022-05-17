@@ -1,7 +1,13 @@
+using Microsoft.EntityFrameworkCore;
+using WebSkul.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<SchoolContext>(   //Adiciona contexto de tipo SchoolContext
+    options => options.UseInMemoryDatabase(databaseName:"testDB")   //Agrega base de datos en memoria
+    );
 
 var app = builder.Build();
 
