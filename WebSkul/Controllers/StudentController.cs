@@ -10,7 +10,7 @@ namespace WebSkul.Controllers
     {
         public IActionResult Index()
         {
-            var student = new Student { Name = "Ran Mitake", UniqueId = Guid.NewGuid().ToString() };
+            var student = new Student { Name = "Ran Mitake", Id = Guid.NewGuid().ToString() };
             
             return View(student);
         }
@@ -32,9 +32,9 @@ namespace WebSkul.Controllers
                               from n2 in middleName
                               from a1 in lastName
                               select new Student { Name = $"{n1} {n2} {a1}",
-                                                   UniqueId = Guid.NewGuid().ToString() };
+                                                   Id = Guid.NewGuid().ToString() };
 
-            return studentList.OrderBy((stn) => stn.UniqueId).ToList();     //El delegado Obrder By ordena por el ide unico y Take trunca la lista de n alumnos a un numero especifico
+            return studentList.OrderBy((stn) => stn.Id).ToList();     //El delegado Obrder By ordena por el ide unico y Take trunca la lista de n alumnos a un numero especifico
         }
     }
 }
