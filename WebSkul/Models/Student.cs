@@ -4,6 +4,8 @@ namespace WebSkul.Models
 {
     public class Student : SchoolBaseObject         //Herencia
     {
-        public List<Evaluation> EvaluationsList { get; set; } = new List<Evaluation>(){};
+        public List<Evaluation> EvaluationsList { get; set; }
+        public string CourseId { get; set; }
+        public Course Course { get; set; }
     }
 }
