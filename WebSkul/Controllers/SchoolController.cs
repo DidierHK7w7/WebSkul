@@ -11,7 +11,6 @@ namespace WebSkul.Controllers
         public IActionResult Index()   //metodo de vista
         {
             ViewBag.DynamicThing = "Hello world xd";    //variable dinamica
-
             var school = _context.Schools.FirstOrDefault();     //Extrae la primera o default school de la base de datos
             return View(school);  //retorna la vista
         }

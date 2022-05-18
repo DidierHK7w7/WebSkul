@@ -2,7 +2,7 @@
     ViewData["Title"] = "Asignaturas multiples";   //viewbag y viewdata, son 2 vistas de la misma informacion
     Layout = "_Material";   //Layout que usara la vista
 }
-@model List<Subject>    //Si se recibe multiples asignaturas sera una lista o cualquier otro objeto de coleccion, no tiene nombre pero es un modelo
+@model IEnumerable<Subject>    //Si se recibe multiples asignaturas sera una lista o cualquier otro objeto de coleccion, no tiene nombre pero es un modelo
 
 <div>
     <h1 class="display-4 center-align">@ViewData["Title"]</h1>

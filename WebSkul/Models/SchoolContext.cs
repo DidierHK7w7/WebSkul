@@ -10,7 +10,7 @@ namespace WebSkul.Models
         public DbSet<Subject> Subjects { get; set; }
         public DbSet<Course> Courses { get; set; }
         public DbSet<Evaluation> Evaluations { get; set; }
-        public DbSet<Subject> Students { get; set; }
+        public DbSet<Student> Students { get; set; }
 
         public SchoolContext(DbContextOptions<SchoolContext> options):base(options)     //options parametro generico, se indica el tipo d edato
         {
@@ -35,7 +35,7 @@ namespace WebSkul.Models
                     new Subject { Name = "English", Id = Guid.NewGuid().ToString() },
                     new Subject { Name = "Videogames", Id = Guid.NewGuid().ToString() },
                     new Subject { Name = "Music", Id = Guid.NewGuid().ToString() },
-                    new Subject { Name = "Web apps development xD", Id = Guid.NewGuid().ToString() }
+                    new Subject { Name = "Web apps development", Id = Guid.NewGuid().ToString() }
                 );
             modelBuilder.Entity<Student>().HasData(RandomStudentsGenerator().ToArray());    //Hasdata requiere array, RandomStudentsGenerator() devuelve una lista porl o que se castea
         }
