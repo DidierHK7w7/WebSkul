@@ -16,7 +16,7 @@ namespace WebSkul.Models
 
         public School(string name, int year) =>(Name, CreationYear) = (name, year);     //Metodo constructor con lambda, ()=() asignacion de tuplas
 
-        public School(string name, int year, SchoolType type, string country="", string city = "")     //Segundo constructor
+        public School(string name, int year, SchoolType type, string country="", string city = ""):base()     //Segundo constructor
         {
             (Name, CreationYear) = (name, year);
             Country = country;
