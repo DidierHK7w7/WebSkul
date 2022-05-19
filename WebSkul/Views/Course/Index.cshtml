@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Curso";   //viewbag y viewdata, son 2 vistas de la misma informacion
+    Layout = "_Material";   //Layout que usara la vista
+}
+@model Course    //indica que los modelos seran de tipo School para evitar errores en variables
+
+<div>
+    <h1 class="display-4 center-align">@ViewData["Title"]</h1>
+    <div>
+        <p><b>Vista normal</b></p>
+        <p>Nombre: @Model.Name</p>
+        <p>Id: @Model.Id</p>
+    </div>
+    <br />
+
+    <p><b>Vista Parcial</b></p>
+    <partial name="_SchoolBaseObject"></partial>    <!--Tag helper-->
+
+    <br />
+    <p>@ViewBag.DynamicThing</p>
+    <p>@ViewBag.Date</p>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <a class="grey darken-3 waves-effect waves-light btn-small" asp-area="" asp-controller="Course" asp-action="MultiCourse"><i class="material-icons right">send</i>Cursos</a>
+</div>

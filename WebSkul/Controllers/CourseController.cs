@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace WebSkul.Controllers
 {
-    public class StudentController : Controller
+    public class CourseController : Controller
     {
         private SchoolContext _context;
 
@@ -17,23 +17,23 @@ namespace WebSkul.Controllers
         {
             if (!string.IsNullOrWhiteSpace(id))
             {
-                var student = from sdt in _context.Students
-                              where sdt.Id == id
-                              select sdt;
-                return View(student.SingleOrDefault());
+                var course = from crs in _context.Courses
+                              where crs.Id == id
+                              select crs;
+                return View(course.SingleOrDefault());
             }
             else
             {
-                return View("MultiStudent", _context.Students);
+                return View("MultiCourse", _context.Courses);
             }
         }
 
-        public IActionResult MultiStudent()
+        public IActionResult MultiCourse()
         {
-            return View(_context.Students);      //Trae todos los alumnos de la db. Nota. se envia un dbset cuando requiere una lista, por lo que se cambia a ienumerable en la vista
+            return View(_context.Courses);      //Trae todos los alumnos de la db. Nota. se envia un dbset cuando requiere una lista, por lo que se cambia a ienumerable en la vista
         }
 
-        public StudentController(SchoolContext context)
+        public CourseController(SchoolContext context)
         {
             _context = context;
         }

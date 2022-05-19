@@ -1,0 +1,11 @@
+﻿@{
+    ViewData["Title"] = "Cursos multiples";   //viewbag y viewdata, son 2 vistas de la misma informacion
+    Layout = "_Material";   //Layout que usara la vista (MaterializeCSS)
+}
+@model IEnumerable<Course>    //Si se recibe multiples asignaturas sera una lista o cualquier otro objeto de coleccion, no tiene nombre pero es un modelo
+
+<div class="">
+        <h1 class="display-4 center-align">@ViewData["Title"]</h1>
+        <br />
+        <partial name="_BaseSchoolObjectList"></partial>
+</div>
