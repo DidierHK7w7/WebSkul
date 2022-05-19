@@ -68,8 +68,48 @@ namespace WebSkul.Controllers
             ViewBag.CourseCreated = "Curso creado";
 
             return View("index", course);
+        }
 
 
+
+
+
+        //Editar curso
+        public IActionResult Update(string id)      //Editar curso
+        {
+            var Course = from cour in _context.Courses
+                         where cour.Id == id
+                         select cour;
+
+            return View("Create", Course.SingleOrDefault());
+        }
+
+        [HttpPost]
+        public IActionResult Update(Course newData, string id)
+        {
+            var CourseSearch = from cour in _context.Courses
+                               where cour.Id == id
+                               select cour;
+
+            var Course = CourseSearch.SingleOrDefault();
+
+            Course.Address = newData.Address;
+            Course.Name = newData.Name;
+            Course.Working = newData.Working;
+            _context.SaveChanges();
+
+            return View("index",newData);
+        }
+
+        //Eliminar curso
+        public IActionResult Delete(string id)
+        {
+            var CourseSearch = from cour in _context.Courses
+                               where cour.Id == id
+                               select cour;
+            _context.Courses.Remove(CourseSearch.FirstOrDefault());
+            _context.SaveChanges();
+            return RedirectToAction("index");
         }
 
         public CourseController(SchoolContext context)
