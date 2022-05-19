@@ -1,8 +1,8 @@
 ﻿@{
-    ViewData["Title"] = "Crear nuevo Alumno";   //viewbag y viewdata, son 2 vistas de la misma informacion
+    ViewData["Title"] = "Crear nuevo Asignatura";   //viewbag y viewdata, son 2 vistas de la misma informacion
     Layout = "_Material";   //Layout que usara la vista
 }
-@model Student    //indica que los modelos seran de tipo School para evitar errores en variables
+@model Subject    //indica que los modelos seran de tipo School para evitar errores en variables
 
 <div class="row">
     <h1 class=" center-align">@ViewData["Title"]</h1>
@@ -11,7 +11,7 @@
         <form method="POST" class="">
             <div class="">
                 <div class="input-field col l9">
-                    <i class="material-icons prefix">account_circle</i>
+                    <i class="material-icons prefix">class</i>
                     <input asp-for="Name" id="icon_prefix" type="text" class="validate white-text" required>
                     <label asp-for="Name" for="icon_prefix">Nombre</label>
                 </div>
