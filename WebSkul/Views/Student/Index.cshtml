@@ -10,15 +10,12 @@
         <p><b>Vista normal</b></p>
         <p>Nombre: @Model.Name</p>
         <p>Id: @Model.Id</p>
+        <p>Id de curso: @Model.CourseId</p>
     </div>
     <br />
-
     <p><b>Vista Parcial</b></p>
     <partial name="_SchoolBaseObject"></partial>    <!--Tag helper-->
-
     <br />
-    <p>@ViewBag.DynamicThing</p>
-    <p>@ViewBag.Date</p>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
     <a class="grey darken-3 waves-effect waves-light btn-small" asp-area="" asp-controller="Student" asp-action="MultiStudent"><i class="material-icons right">send</i>Alumnos</a>
 </div>

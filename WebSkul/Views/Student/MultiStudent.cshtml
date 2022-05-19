@@ -4,10 +4,9 @@
 }
 @model IEnumerable<Student>    //Si se recibe multiples asignaturas sera una lista o cualquier otro objeto de coleccion, no tiene nombre pero es un modelo
 
-<section class="white black-text">
-    <div class="">
+<div class="">
         <h1 class="display-4 center-align">@ViewData["Title"]</h1>
         <br />
+        <a class="grey darken-3 waves-effect waves-light btn-small right" asp-area="" asp-controller="Student" asp-action="Create"><i class="material-icons right">send</i>Crear Alumno</a>
         <partial name="_BaseSchoolObjectList"></partial>
-    </div>
-</section>
+</div>

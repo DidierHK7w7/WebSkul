@@ -13,6 +13,7 @@ namespace WebSkul.Controllers
         //[Route("Student/Index/")]       //permite no enviar el id como parametro
         //[Route("Student/Index/{subjectId}")]
 
+        //Index
         public IActionResult Index(string id)
         {
             if (!string.IsNullOrWhiteSpace(id))
@@ -28,12 +29,13 @@ namespace WebSkul.Controllers
             }
         }
 
+        //Multi curso
         public IActionResult MultiCourse()
         {
             return View(_context.Courses);      //Trae todos los alumnos de la db. Nota. se envia un dbset cuando requiere una lista, por lo que se cambia a ienumerable en la vista
         }
 
-
+        //Crear curso
         public IActionResult Create()
         {
             ViewBag.Date = DateTime.Now;
@@ -44,35 +46,21 @@ namespace WebSkul.Controllers
         public async Task<IActionResult> Create(Course course)
         {
             ViewBag.Date = DateTime.Now;
-
-
             //if (ModelState.IsValid)
             //{
-            //    var school = _context.Schools.FirstOrDefault();
-
-            //    course.SchoolId = school.Id;
-            //    _context.Courses.Add(course);   //adiciona el courso q se pasa por parametro
-            //    await _context.SaveChangesAsync();     //Guarda los cambios
-            //    ViewBag.CourseCreated = "Curso creado";
-            //    return View("index", course);
+            //   
             //}
             //else
             //{
             //    return View(course);
             //}
-
             var school = _context.Schools.FirstOrDefault();
             course.SchoolId = school.Id;
             _context.Courses.Add(course);   //adiciona el courso q se pasa por parametro
             _context.SaveChanges();     //Guarda los cambios
             ViewBag.CourseCreated = "Curso creado";
-
             return View("index", course);
         }
-
-
-
-
 
         //Editar curso
         public IActionResult Update(string id)      //Editar curso
@@ -83,7 +71,6 @@ namespace WebSkul.Controllers
 
             return View("Create", Course.SingleOrDefault());
         }
-
         [HttpPost]
         public IActionResult Update(Course newData, string id)
         {
