@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+
 namespace WebSkul.Models
 {
     public class Course : SchoolBaseObject
@@ -13,5 +15,8 @@ namespace WebSkul.Models
 
         public string SchoolId { get; set; }
         public School School { get; set; }
+
+        //[Required]
+        //public override string Name { get; set; }   //Campo sobreescrito, es requerido pero solo para este modelo
     }
 }

@@ -43,15 +43,30 @@ namespace WebSkul.Controllers
         [HttpPost]  //El metodo solo funcionara cuando la peticion sea por porst
         public IActionResult Create(Course course)
         {
-            ViewBag.Date = DateTime.Now;
+            //ViewBag.Date = DateTime.Now;
+
+            //if (ModelState.IsValid)
+            //{
+            //    var school = _context.Schools.FirstOrDefault();
+            //    course.SchoolId = school.Id;
+            //    _context.Courses.Add(course);   //adiciona el courso q se pasa por parametro
+            //    _context.SaveChanges();     //Guarda los cambios
+            //    ViewBag.CourseCreated = "Curso creado";
+            //    return View("index", course);
+            //}
+            //else
+            //{
+            //    return View(course);
+            //}
             var school = _context.Schools.FirstOrDefault();
+                course.SchoolId = school.Id;
+                _context.Courses.Add(course);   //adiciona el courso q se pasa por parametro
+                _context.SaveChanges();     //Guarda los cambios
+                ViewBag.CourseCreated = "Curso creado";
 
-            course.SchoolId = school.Id;
-            
+                return View("index", course);
 
-            _context.Courses.Add(course);   //adiciona el courso q se pasa por parametro
-            _context.SaveChanges();     //Guarda los cambios
-            return View();
+
         }
 
         public CourseController(SchoolContext context)
