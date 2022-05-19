@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Crear nuevo Curso";   //viewbag y viewdata, son 2 vistas de la misma informacion
+    Layout = "_Material";   //Layout que usara la vista
+}
+@model Course    //indica que los modelos seran de tipo School para evitar errores en variables
+
+<div class="row">
+    <h1 class="display-4 center-align">@ViewData["Title"]</h1>
+    <div class=" col l6">
+        <form method="POST" class="">
+            <div class="">
+                <div class="input-field col l9">
+                    <i class="material-icons prefix">class</i>
+                    <input asp-for="Name" id="icon_prefix" type="text" class="validate white-text">
+                    <label asp-for="Name" for="icon_prefix">Nombre</label>
+                </div>
+
+                <div class="input-field col l9">
+                    <i class="material-icons prefix">place</i>
+                    <input asp-for="Address" id="icon_prefix" type="text" class="validate white-text">
+                    <label asp-for="Address" for="icon_prefix">Direccion</label>
+                </div>
+
+                <div class="input-field col l9">
+                    <i class="material-icons prefix">access_time</i>
+                    <input asp-for="Working" id="icon_prefix" type="text" class="validate white-text">
+                    <label asp-for="Working" for="icon_prefix">Jornada</label>
+                </div><br />
+
+                <div class="col l9">
+                    <button type="submit" name="action" class="btn grey darken-3 waves-effect waves-light btn-small">
+                        <i class="material-icons right">send</i>Crear
+                    </button><br />
+                </div>
+                <p>@ViewBag.Date</p>
+            </div>
+        </form>
+    </div>
+</div>

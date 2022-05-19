@@ -33,6 +33,27 @@ namespace WebSkul.Controllers
             return View(_context.Courses);      //Trae todos los alumnos de la db. Nota. se envia un dbset cuando requiere una lista, por lo que se cambia a ienumerable en la vista
         }
 
+
+        public IActionResult Create()
+        {
+            ViewBag.Date = DateTime.Now;
+            return View();
+        }
+
+        [HttpPost]  //El metodo solo funcionara cuando la peticion sea por porst
+        public IActionResult Create(Course course)
+        {
+            ViewBag.Date = DateTime.Now;
+            var school = _context.Schools.FirstOrDefault();
+
+            course.SchoolId = school.Id;
+            
+
+            _context.Courses.Add(course);   //adiciona el courso q se pasa por parametro
+            _context.SaveChanges();     //Guarda los cambios
+            return View();
+        }
+
         public CourseController(SchoolContext context)
         {
             _context = context;

@@ -2,6 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore.Metadata;
+
 namespace WebSkul.Models
 {
     public class SchoolContext : DbContext
@@ -19,7 +21,19 @@ namespace WebSkul.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)   //Metodo que se ejecuta en la creacion de la base de datos
         {
             base.OnModelCreating(modelBuilder);     //Se invoca el metodo original para que haga lo que tiene que hacer y luego el metodo sobreescrito para que haga lo que queremos (creando escuela)
-            
+
+            /*
+            No se puede rastrear una entidad de tipo porque la propiedad de clave principal 'id' es nula
+            Esto se debe a cambios importantes en EF Core 3.0 que se pueden encontrar en este enlace: https://docs.microsoft.com/en-us/ef/core/what-is-new/ef-core-3.0/breaking-changes#string-and-byte-array-keys-are-not-client-generated-by-default
+            El comportamiento anterior a 3.0 se puede obtener especificando explícitamente que las propiedades 
+            clave deben usar valores generados si no se establece ningún otro valor que no sea nulo.
+            */
+            var keysProperties = modelBuilder.Model.GetEntityTypes().Select(x => x.FindPrimaryKey()).SelectMany(x => x.Properties);
+            foreach (var property in keysProperties)
+            {
+                property.ValueGenerated = ValueGenerated.OnAdd;
+            }
+
             var school = new School();
             school.Id = Guid.NewGuid().ToString();
             school.Name = "Platzi School";
@@ -46,11 +60,11 @@ namespace WebSkul.Models
         {
             var courseList = new List<Course>()
             {
-                new Course(){Id = Guid.NewGuid().ToString(), SchoolId = school.Id, Name = "101", Working = WorkingType.Morning},
-                new Course(){Id = Guid.NewGuid().ToString(), SchoolId = school.Id, Name = "201", Working = WorkingType.Morning},
-                new Course(){Id = Guid.NewGuid().ToString(), SchoolId = school.Id, Name = "301", Working = WorkingType.Morning},
-                new Course(){Id = Guid.NewGuid().ToString(), SchoolId = school.Id, Name = "401", Working = WorkingType.Afternoon},
-                new Course(){Id = Guid.NewGuid().ToString(), SchoolId = school.Id, Name = "501", Working = WorkingType.Afternoon}
+                new Course(){Id = Guid.NewGuid().ToString(), SchoolId = school.Id, Name = "101", Working = WorkingType.Morning, Address = school.Address},
+                new Course(){Id = Guid.NewGuid().ToString(), SchoolId = school.Id, Name = "201", Working = WorkingType.Morning, Address = school.Address},
+                new Course(){Id = Guid.NewGuid().ToString(), SchoolId = school.Id, Name = "301", Working = WorkingType.Morning, Address = school.Address},
+                new Course(){Id = Guid.NewGuid().ToString(), SchoolId = school.Id, Name = "401", Working = WorkingType.Afternoon, Address = school.Address},
+                new Course(){Id = Guid.NewGuid().ToString(), SchoolId = school.Id, Name = "501", Working = WorkingType.Afternoon, Address = school.Address}
             };
             return courseList;
         }
