@@ -5,16 +5,17 @@
 @model School    //indica que los modelos seran de tipo School para evitar errores en variables
 
 <div>
-    <h1 class="display-4 text-center">Welcome to the jungle!</h1>
-    <h2>Escuela</h2>
-    <h3>Nombre: @Model.Name</h3>    <!--Pasamos los objetos del modelo-->
-    <h4>Tipo de escuela: @Model.SchoolType</h4>
+    <h1 class="center-align">Bienvenidos a la escuela: @Model.Name</h1>
+
+    <br />
+    <h5>Ubicacion</h5>
     <address>
         <p>Dirección: @Model.Address</p>
         <p>País: @Model.Country</p>
         <p>Ciudad: @Model.City</p>
-    </address>
-    <h4>Año de fundación: @Model.CreationYear</h4>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-    <p>@ViewBag.DynamicThing</p>
+    </address><br />
+    <h5>Acerca de la escuela</h5>
+    <p>Tipo de escuela: @Model.SchoolType</p>
+    <p>Año de fundación: @Model.CreationYear</p>
+    <!--<p>@ViewBag.DynamicThing</p>-->
 </div>

@@ -21,8 +21,9 @@
                 <td>@obj.Name</td>
                 <td>@obj.Id</td>
                 <th>
+                <a asp-action="Index" asp-route-id="@obj.Id" class="ml-3 white-text"><i class="material-icons">visibility</i></a>
                 <a asp-action="Update" asp-route-id="@obj.Id" class="ml-3 white-text"><i class="material-icons">mode_edit</i></a>
-                <a asp-action="Delete" asp-route-id="@obj.Id" class="ml-3 white-text"><i class="material-icons">delete</i></a>
+                <a asp-action="Delete" asp-route-id="@obj.Id" class="ml-3 white-text"><i class="material-icons table__item__link">delete</i></a>
                 </th>
             </tr>
             i++;

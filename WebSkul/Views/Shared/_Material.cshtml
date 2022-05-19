@@ -18,14 +18,12 @@
     <header class="navbar-fixed">
         <nav class="black">
             <div class="nav-wrapper row">
-                <a class="brand-logo light-blue-text accent-4 col l1 offset-l1" asp-area="" asp-controller="Home" asp-action="Index">WebSkul</a>
+                <a class="brand-logo light-blue-text accent-4 col l1 offset-l1" asp-area="" asp-controller="School" asp-action="Index">WebSkul</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a class="" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a></li>
-                    <li><a class="" asp-area="" asp-controller="School" asp-action="Index">School</a></li>
-                    <li><a class="" asp-area="" asp-controller="Course" asp-action="Index">Course</a></li>
-                    <li><a class="" asp-area="" asp-controller="Student" asp-action="Index">Student</a></li>
-                    <li><a class="" asp-area="" asp-controller="Subject" asp-action="Index">Subject</a></li>
+                    <li><a class="" asp-area="" asp-controller="School" asp-action="Index">Inicio</a></li>
+                    <li><a class="" asp-area="" asp-controller="Course" asp-action="MultiCourse">Cursos</a></li>
+                    <li><a class="" asp-area="" asp-controller="Student" asp-action="MultiStudent">Estudiantes</a></li>
+                    <li><a class="" asp-area="" asp-controller="Subject" asp-action="MultiSubject">Asignaturas</a></li>
                     
                 </ul>
             </div>
@@ -66,5 +64,20 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+    <script>
+        function confirmacion(e)
+        {
+            if (confirm("Esta seguro de eliminar este elemento?"))
+            {
+                return true;
+            }else{
+                e.preventDefault();
+            }
+        }
+        let linkdelete = document.querySelectorAll(".table__item__link");
+        for (var i = 0; i < linkdelete.length; i++){
+            linkdelete[i].addEventListener('click', confirmacion);
+        }
+    </script>
 </body>
 </html>
