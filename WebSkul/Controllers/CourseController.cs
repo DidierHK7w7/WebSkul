@@ -41,16 +41,18 @@ namespace WebSkul.Controllers
         }
 
         [HttpPost]  //El metodo solo funcionara cuando la peticion sea por porst
-        public IActionResult Create(Course course)
+        public async Task<IActionResult> Create(Course course)
         {
-            //ViewBag.Date = DateTime.Now;
+            ViewBag.Date = DateTime.Now;
+
 
             //if (ModelState.IsValid)
             //{
             //    var school = _context.Schools.FirstOrDefault();
+
             //    course.SchoolId = school.Id;
             //    _context.Courses.Add(course);   //adiciona el courso q se pasa por parametro
-            //    _context.SaveChanges();     //Guarda los cambios
+            //    await _context.SaveChangesAsync();     //Guarda los cambios
             //    ViewBag.CourseCreated = "Curso creado";
             //    return View("index", course);
             //}
@@ -58,13 +60,14 @@ namespace WebSkul.Controllers
             //{
             //    return View(course);
             //}
-            var school = _context.Schools.FirstOrDefault();
-                course.SchoolId = school.Id;
-                _context.Courses.Add(course);   //adiciona el courso q se pasa por parametro
-                _context.SaveChanges();     //Guarda los cambios
-                ViewBag.CourseCreated = "Curso creado";
 
-                return View("index", course);
+            var school = _context.Schools.FirstOrDefault();
+            course.SchoolId = school.Id;
+            _context.Courses.Add(course);   //adiciona el courso q se pasa por parametro
+            _context.SaveChanges();     //Guarda los cambios
+            ViewBag.CourseCreated = "Curso creado";
+
+            return View("index", course);
 
 
         }

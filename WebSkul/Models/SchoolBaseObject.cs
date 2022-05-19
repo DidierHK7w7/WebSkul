@@ -7,8 +7,12 @@ namespace WebSkul.Models
     {
         public string Id { get; set; }
 
-        public string Name { get; set; }    //los campos virtuales pueden ser redescritos por las clases hijo
+        public virtual string Name { get; set; }    
 
+        public SchoolBaseObject()
+        {
+
+        }
         public override string ToString() => $"{Name},{Id}";
     }
 }

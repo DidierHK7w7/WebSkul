@@ -6,8 +6,8 @@
 
 <div class="row">
     <h1 class=" center-align">@ViewData["Title"]</h1>
-    <div asp-validation-summary="All"></div>
     <div class=" col l6">
+        <div asp-validation-summary="All"></div>
         <form method="POST" class="">
             <div class="">
                 <div class="input-field col l9">
@@ -18,13 +18,12 @@
 
                 <div class="input-field col l9">
                     <i class="material-icons prefix">place</i>
-                    <input asp-for="Address" id="icon_prefix" type="text" class="validate white-text">
+                    <input asp-for="Address" id="icon_prefix" type="text" class="validate white-text" required minlength="10">
                     <label asp-for="Address" for="icon_prefix">Direccion</label>
                 </div>
 
                 <!-- Formulario select, taghelpers, bootstrap (uso el _Material layout, no tiene bootstrap xD)-->
                 <div class="input-field col l9">
-                    <label asp-for="Working">Jornada</label>
                     @Html.DropDownList(
                         "Working",Html.GetEnumSelectList<WorkingType>(), //trae la lista de tipos de jornadas
                         "Selecciona una jornada",
