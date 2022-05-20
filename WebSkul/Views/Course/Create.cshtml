@@ -6,45 +6,32 @@
 
 <div class="row">
     <h1 class=" center-align">@ViewData["Title"]</h1>
-    <div class=" col l6">
+    <div class=" col l6 m8 s12">
         <div asp-validation-summary="All"></div>
         <form method="POST" class="">
             <div class="">
-                <div class="input-field col l9">
+                <div class="input-field col l9 m12 s12">
                     <i class="material-icons prefix">class</i>
                     <input asp-for="Name" id="icon_prefix" type="text" class="validate white-text" required>
                     <label asp-for="Name" for="icon_prefix">Nombre</label>
                 </div>
 
-                <div class="input-field col l9">
+                <div class="input-field col l9 m12 s12">
                     <i class="material-icons prefix">place</i>
                     <input asp-for="Address" id="icon_prefix" type="text" class="validate white-text" required minlength="10">
                     <label asp-for="Address" for="icon_prefix">Direccion</label>
                 </div>
+                
+                <div class="input-field col l9 m12 s12 white">
+                    <i class="material-icons prefix black-text">access_time</i>
+                        @Html.DropDownList(
+                            "Working",Html.GetEnumSelectList<WorkingType>(), //trae la lista de tipos de jornadas
+                            "Selecciona una jornada",
+                            new {@class = ""}    //browser defaul es materialize
+                        )
+                </div>
 
-                <!-- Formulario select, taghelpers, bootstrap (uso el _Material layout, no tiene bootstrap xD)-->
-                <div class="input-field col l9">
-                    @Html.DropDownList(
-                        "Working",Html.GetEnumSelectList<WorkingType>(), //trae la lista de tipos de jornadas
-                        "Selecciona una jornada",
-                        new {@class = "browser-default"}    //browser defaul es materialize
-                    )
-                </div>
-                
-                <!-- formulario select materialize -->
-                <!--    
-                <div class="input-field col l9">
-                    <select>
-                        <option value="" disabled selected>Eija una opcion</option>
-                        <option value="Morning">Mañana</option>
-                        <option value="Afternoon">Tarde</option>
-                        <option value="Evening">Noche</option>
-                    </select>
-                    <label asp-for="Working">Jornada</label>
-                </div>
-                -->
-                
-                <div class="col l9">
+                <div class="col l9 m12 s12">
                     <button type="submit" name="action" class="btn grey darken-3 waves-effect waves-light btn-small">
                         <i class="material-icons right">send</i>Crear
                     </button><br />

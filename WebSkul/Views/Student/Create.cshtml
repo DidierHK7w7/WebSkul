@@ -6,22 +6,22 @@
 
 <div class="row">
     <h1 class=" center-align">@ViewData["Title"]</h1>
-    <div class=" col l6">
+    <div class=" col l6 m8 s12">
         <div asp-validation-summary="All"></div>
         <form method="POST" class="">
             <div class="">
-                <div class="input-field col l9">
+                <div class="input-field col l9 m12 s12">
                     <i class="material-icons prefix">account_circle</i>
                     <input asp-for="Name" id="icon_prefix" type="text" class="validate white-text" required>
                     <label asp-for="Name" for="icon_prefix">Nombre</label>
                 </div>
 
-                <div class="col l9">
+                <div class="col l9 m12 s12">
                     <button type="submit" name="action" class="btn grey darken-3 waves-effect waves-light btn-small">
                         <i class="material-icons right">send</i>Crear
                     </button><br />
                 </div>
-                <p class="col l9">@ViewBag.Date</p>
+                <p class="col l9 m12 s12">@ViewBag.Date</p>
             </div>
         </form>
     </div>

@@ -10,7 +10,7 @@ namespace WebSkul.Models
         public List<Subject> Subjects { get; set; }
         public List<Student> Students { get; set; }
 
-        [Display(Prompt = "Dirección correspondencia")]   //promp es casi como un placeholder
+        //[Display(Prompt = "Dirección correspondencia")]   //promp es casi como un placeholder
         [Required(ErrorMessage = "Se requiere incluir una dirección")]
         [MinLength(10, ErrorMessage = "La longitud mínima de la dirección es 5")]
         public string Address { get; set; }
