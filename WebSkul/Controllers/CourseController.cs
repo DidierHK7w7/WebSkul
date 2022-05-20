@@ -3,6 +3,7 @@ using WebSkul.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace WebSkul.Controllers
 {
@@ -16,6 +17,7 @@ namespace WebSkul.Controllers
         //Index
         public IActionResult Index(string id)
         {
+            
             if (!string.IsNullOrWhiteSpace(id))
             {
                 var course = from crs in _context.Courses
@@ -38,7 +40,10 @@ namespace WebSkul.Controllers
         //Crear curso
         public IActionResult Create()
         {
+            ViewData["SchoolId"] = new SelectList(_context.Schools, "Id", "Name"); // "Id" es el valor a guardar, "Nombre" el valor a mostrar
+
             ViewBag.Date = DateTime.Now;
+            ViewBag.DynamicThing = "Crear";
             return View();
         }
 
@@ -54,8 +59,9 @@ namespace WebSkul.Controllers
             //{
             //    return View(course);
             //}
-            var school = _context.Schools.FirstOrDefault();
-            course.SchoolId = school.Id;
+            //var school = _context.Schools.FirstOrDefault();
+            //course.SchoolId = school.Id;
+
             _context.Courses.Add(course);   //adiciona el courso q se pasa por parametro
             _context.SaveChanges();     //Guarda los cambios
             ViewBag.CourseCreated = "Curso creado";
@@ -65,6 +71,8 @@ namespace WebSkul.Controllers
         //Editar curso
         public IActionResult Update(string id)      //Editar curso
         {
+            ViewData["SchoolId"] = new SelectList(_context.Schools, "Id", "Name");
+            ViewBag.DynamicThing = "Editar";
             var Course = from cour in _context.Courses
                          where cour.Id == id
                          select cour;
@@ -74,6 +82,7 @@ namespace WebSkul.Controllers
         [HttpPost]
         public IActionResult Update(Course newData, string id)
         {
+            ViewData["SchoolId"] = new SelectList(_context.Schools, "Id", "Name");
             var CourseSearch = from cour in _context.Courses
                                where cour.Id == id
                                select cour;
@@ -83,6 +92,7 @@ namespace WebSkul.Controllers
             Course.Address = newData.Address;
             Course.Name = newData.Name;
             Course.Working = newData.Working;
+            Course.SchoolId = newData.SchoolId;
             _context.SaveChanges();
 
             return View("index",newData);

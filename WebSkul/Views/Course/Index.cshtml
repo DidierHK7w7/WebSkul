@@ -2,7 +2,7 @@
     ViewData["Title"] = "Curso";   //viewbag y viewdata, son 2 vistas de la misma informacion
     Layout = "_Material";   //Layout que usara la vista
 }
-@model Course    //indica que los modelos seran de tipo School para evitar errores en variables
+@model Course    
 
 <div>
     <h1 class="display-4 center-align">@ViewData["Title"]</h1>
@@ -12,6 +12,7 @@
         <p>Id: @Model.Id</p>
         <p>Direccion: @Model.Address</p>
         <p>Jornada: @Model.Working</p>
+        <p>Excuela id: @Model.SchoolId</p>
     </div>
     <br />
     <p><b>Vista Parcial</b></p>

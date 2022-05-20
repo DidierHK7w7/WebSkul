@@ -3,6 +3,7 @@ using WebSkul.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace WebSkul.Controllers
 {
@@ -16,6 +17,7 @@ namespace WebSkul.Controllers
         //Index
         public IActionResult Index(string id)
         {
+            ViewData["CourseId"] = new SelectList(_context.Courses, "Id", "Name"); // "Id" es el valor a guardar, "Nombre" el valor a mostrar
             if (!string.IsNullOrWhiteSpace(id))
             {
                 var student = from sdt in _context.Students
@@ -38,7 +40,10 @@ namespace WebSkul.Controllers
         //Crear alumno
         public IActionResult Create()
         {
+            ViewData["CourseId"] = new SelectList(_context.Courses, "Id", "Name"); // "Id" es el valor a guardar, "Nombre" el valor a mostrar
+
             ViewBag.Date = DateTime.Now;
+            ViewBag.DynamicThing = "Crear";
             return View();
         }
 
@@ -47,8 +52,9 @@ namespace WebSkul.Controllers
         {
             ViewBag.Date = DateTime.Now;
 
-            var course = _context.Courses.FirstOrDefault();
-            student.CourseId = course.Id;
+            //var course = _context.Courses.FirstOrDefault();
+            //student.CourseId = course.Id;
+
             _context.Students.Add(student);   //adiciona el courso q se pasa por parametro
             _context.SaveChanges();     //Guarda los cambios
             ViewBag.StudentsCreated = "Alumno creado";
@@ -58,6 +64,8 @@ namespace WebSkul.Controllers
         //Editar alumno
         public IActionResult Update(string id)      //Editar curso
         {
+            ViewData["CourseId"] = new SelectList(_context.Courses, "Id", "Name");
+            ViewBag.DynamicThing = "Editar";
             var student = from sdt in _context.Students
                          where sdt.Id == id
                          select sdt;
@@ -72,6 +80,7 @@ namespace WebSkul.Controllers
                                select sdt;
             var student = studentSearch.SingleOrDefault();
             student.Name = newData.Name;
+            student.CourseId = newData.CourseId;
             _context.SaveChanges();
             return View("index", newData);
         }
